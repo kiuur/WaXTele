@@ -75,10 +75,6 @@ const isAdmins = isGroup ? groupAdmins.includes(m.sender) : false;
 // Function
 const { smsg, sendGmail, formatSize, isUrl, generateMessageTag, getBuffer, getSizeMedia, runtime, fetchJson, sleep } = require('./lib/myfunction');
 const { ytdl } = require('./lib/scrape/scrape-ytdl')
-
-let Buttons = require("./lib/buttondoc");
-let batten = new Buttons();
-
 // Time
 const time = moment.tz("Asia/Makassar").format("HH:mm:ss");
 
@@ -120,75 +116,48 @@ buttons: [{text: "N-Kiuur ZcoderX"}
 client.relayMessage(m.chat, {viewOnceMessage:{message}}, {messageId:key.id})
 }
 
+const reply = (teks) => {
+let Button = require("./lib/button");
+let btn = new Button();
+const baten = new Button()
+let ads = baten.setBody(teks);
+ads += baten.setImage('https://files.catbox.moe/0oo8mo.jpg')
+ads += baten.addUrl("N-Kiuur ZcoderX", `shinoa.us.kg`);
+ads += baten.run(m.chat, client, m);
+}
+
 const reaction = async (jidss, emoji) => {
 client.sendMessage(jidss, { react: { text: emoji, key: m.key }})}
-  
+    
 // Command handler
 switch (command) {
 
-case 'menu':{
-let wow = `hi ${pushname} 🪸, i am an automated system (WhatsApp bot) that can help to do something search and get data / information only through WhatsApp.
+case'menu':{
+await reaction(m.chat, "🔒");
+reply(`hi ${pushname} 🪸, i am an automated system (WhatsApp bot) that can help to do something search and get data / information only through WhatsApp.
 
  ▢ Creator : N-Kiuur ZcoderX
  ▢ Library : WS-Baileys
  ▢ Mode : ${client.public ? 'Public' : 'Self'}
 
-*N-Kiuur* is a WhatsApp bot developed using NodeJS and Baileys library. This bot was created to provide a better user experience in interacting on the platform.`
-let buttons = new Buttons();   
-buttons.setBody(wow)
-buttons.addSelection("List Menu");
-buttons.makeSections("#! - Show All Menu List!!", "");
-buttons.makeRow(
-    "#! - Show All Menu",
-    "display all menu in the bot !!!",
-    "you can see all the features in this bot",
-    `${prefix}menuall`
-);
-buttons.makeSections("#! - Menu Selection", "");
-buttons.makeRow(
-    "#! - Menu AI",
-    "AI (Artificial Intelligence)",
-    "The abbreviation AI stands for Artificial Intelligence",
-    `${prefix}menuai`
-);
-buttons.makeRow(
-    "#! - Menu Download",
-    "Download Menu for bot",
-    "You can download some media From social media",
-    `${prefix}menudown`
-);
-buttons.makeRow(
-    "#! - Menu Owner",
-    "This menu is for owners only, you must have owner access first to use it.",
-    "Before using it, you must be aware first, are you the owner or not the owner?",
-    `${prefix}menuowner`
-);
-buttons.makeRow(
-    "#! - Menu Group",
-    "You Can Use This Feature in Group Chat",
-    "This feature is only used for groups and cannot be used in private chats.",
-    `${prefix}menugrup`
-);
-buttons.makeRow(
-    "#! - Menu Tools",
-    "This tool may be useful for you",
-    "These various tools may be of some use to you.",
-    `${prefix}menutools`
-);
-buttons.makeSections("Contact Creator", "");
-buttons.makeRow(
-    "#! - Contact Script Owner",
-    "Spam and Call Owner are prohibited!!!",
-    "later you will be blocked by my owner",
-    `${prefix}owner`
-);
-await buttons.run(m.chat, client, m);
+*N-Kiuur* is a WhatsApp bot developed using NodeJS and Baileys library. This bot was created to provide a better user experience in interacting on the platform.`)
+await reaction(m.chat, "🔓");
 }
 break
 
+case 'q': 
+case 'quoted': {
+    if (!m.quoted) return kiuu('Reply Message!!');
+    let wokwol = await client.serializeM(await m.getQuotedObj());
+    if (!wokwol.quoted) return kiuu('The message you replied to does not contain a reply.');
+    await wokwol.quoted.copyNForward(m.chat, true);
+}
+break;
+        
 case "play": {
-if (!text) return m.reply(`*Example:* ${prefix + command} photograph`)
+if (!text) return kiuu(`*Example:* ${prefix + command} photograph`)
 const yts = require('yt-search');
+await reaction(m.chat, "🔒");
 let search = await yts(text);
 let telaso = search.all[0].url;
 var response = await ytdl(telaso)
@@ -197,20 +166,25 @@ client.sendMessage(m.chat, { audio: { url: puki },
 mimetype: "audio/mpeg",
 fileName: "kiuu.mp3",
 contextInfo: {
-forwardingScore: 100,
+forwardingScore: 99999999999,
 isForwarded: true,
 externalAdReply: {
-showAdAttribution: true,
+showAdAttribution: false,
+containsAutoReply: true,
+mediaType: 1,
+renderLargerThumbnail: true,
 title: search.all[0].title,
-sourceUrl: search.all[0].timestamp,
+body: `Song duration: ${search.all[0].timestamp}`,
+previewType: "PHOTO",
 thumbnailUrl: search.all[0].thumbnail,
 }}},{quoted:m})
+await reaction(m.chat, "🔓");
 }
 break
         
 case 'tovn': {
-if (!/video/.test(mime) && !/audio/.test(mime)) return m.reply(`reply video/vn with caption ${prefix + command}`)
-if (!quoted) return m.reply(`reply video/vn with caption ${prefix + command}`)
+if (!/video/.test(mime) && !/audio/.test(mime)) return kiuu(`reply video/vn with caption ${prefix + command}`)
+if (!quoted) return kiuu(`reply video/vn with caption ${prefix + command}`)
 await reaction(m.chat, "🔒");
 await sleep(5000)
 let media = await quoted.download()
@@ -227,7 +201,7 @@ if (!Access) return;
 try {
 let evaled = await eval(budy.slice(2));
 if (typeof evaled !== 'string') evaled = require('util').inspect(evaled);
-await m.reply(evaled);
+await kiuu(evaled);
 } catch (err) {
 m.reply(String(err));
 }
@@ -244,6 +218,14 @@ teks = e
 } finally {
 await m.reply(require('util').format(teks))
 }
+}
+        
+if (budy.startsWith('$')) {
+    if (!Access) return
+    exec(budy.slice(2), (err, stdout) => {
+        if (err) return kiuu(`${err}`)
+        if (stdout) return kiuu(stdout)
+    })
 }
         
 }
