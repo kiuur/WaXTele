@@ -2,8 +2,7 @@
 Hi guys, this is my first project, please forgive me if there are any mistakes, guys✨, this script was created since Thursday, October 17, 2024. Don't forget to give stars and follow me😄🐈‍⬛
 
 ## how to connect with telegram bot
-[ 🇮🇩 ] Berikut adalah langkah-langkah dari awal untuk mendapatkan token bot Telegram melalui **BotFather**:
-
+## [ 🇮🇩 ] Berikut langkah-langkah untuk mendapatkan token bot Telegram:
 1. **Buka aplikasi Telegram**, lalu di kolom pencarian, ketik username **BotFather**:  
    `@BotFather`
 2. Klik **BotFather** dari hasil pencarian, lalu pilih **Start** untuk memulai percakapan.
@@ -13,10 +12,21 @@ Hi guys, this is my first project, please forgive me if there are any mistakes, 
 5. Setelah kamu memberikan nama, **BotFather** akan meminta kamu untuk memberikan username untuk bot tersebut. Username harus diakhiri dengan **"bot"** atau **"_bot"**.  
    Contoh: `myawesome_bot` atau `MyAwesomeBot`
 6. Jika username valid dan belum digunakan, **BotFather** akan mengonfirmasi dan mengirimkan **token API** untuk bot baru tersebut.  
-   Contoh token:  
-   `123456789:ABCDefghIJKLmnOPQRSTUvwxYZ1234567890`
+   Contoh token: `123456789:ABCDefghIJKLmnOPQRSTUvwxYZ1234567890`
 7. Simpan token ini, karena token ini yang akan kamu gunakan untuk mengontrol bot melalui API Telegram.
-8. Itu dia cara lengkap mendapatkan token bot Telegram dari BotFather.
+
+## [ 🇺🇸 ] Here are the steps to get a Telegram bot token:
+1. **Open the Telegram app** and search for **BotFather** by typing the username:  
+   `@BotFather`
+2. Click on **BotFather** from the search results, and select **Start** to begin the conversation.
+3. Type or select the command `/newbot` to create a new bot.
+4. **BotFather** will ask you to provide a name for your new bot.  
+   Example: `MyAwesomeBot`
+5. After you provide a name, **BotFather** will ask you to provide a username for the bot. The username must end with **"bot"** or **"_bot"**.  
+   Example: `myawesome_bot` or `MyAwesomeBot`
+6. If the username is valid and not already in use, **BotFather** will confirm and send you the **API token** for your new bot.  
+   Example token: `123456789:ABCDefghIJKLmnOPQRSTUvwxYZ1234567890`
+7. Save this token, as you will use it to control the bot through the Telegram API.
 
 ## Thank you to those who have helped me ✨
 
