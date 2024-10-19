@@ -1,5 +1,8 @@
-## First Project
+## the second project
 Hi guys, this is my first project, please forgive me if there are any mistakes, guys✨, this script was created since Thursday, October 17, 2024. Don't forget to give stars and follow me😄🐈‍⬛
+
+## how to connect with telegram bot
+
 ## Thank you to those who have helped me ✨
 
 - [`kiuur`](https://github.com/kiuur) KyuuRzy ( crator )
