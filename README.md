@@ -2,6 +2,21 @@
 Hi guys, this is my first project, please forgive me if there are any mistakes, guys✨, this script was created since Thursday, October 17, 2024. Don't forget to give stars and follow me😄🐈‍⬛
 
 ## how to connect with telegram bot
+[ 🇮🇩 ] Berikut adalah langkah-langkah dari awal untuk mendapatkan token bot Telegram melalui **BotFather**:
+
+1. **Buka aplikasi Telegram**, lalu di kolom pencarian, ketik username **BotFather**:  
+   `@BotFather`
+2. Klik **BotFather** dari hasil pencarian, lalu pilih **Start** untuk memulai percakapan.
+3. Ketik atau pilih perintah `/newbot` untuk membuat bot baru.
+4. **BotFather** akan meminta kamu untuk memberikan nama bot baru.  
+   Contoh: `MyAwesomeBot`
+5. Setelah kamu memberikan nama, **BotFather** akan meminta kamu untuk memberikan username untuk bot tersebut. Username harus diakhiri dengan **"bot"** atau **"_bot"**.  
+   Contoh: `myawesome_bot` atau `MyAwesomeBot`
+6. Jika username valid dan belum digunakan, **BotFather** akan mengonfirmasi dan mengirimkan **token API** untuk bot baru tersebut.  
+   Contoh token:  
+   `123456789:ABCDefghIJKLmnOPQRSTUvwxYZ1234567890`
+7. Simpan token ini, karena token ini yang akan kamu gunakan untuk mengontrol bot melalui API Telegram.
+8. Itu dia cara lengkap mendapatkan token bot Telegram dari BotFather.
 
 ## Thank you to those who have helped me ✨
 
