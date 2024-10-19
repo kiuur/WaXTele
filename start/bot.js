@@ -3,7 +3,7 @@ const { Telegraf } = require('telegraf');
 const yts = require('yt-search');
 const { ytdl } = require('./lib/scrape/scrape-ytdl');
 
-const BOT_TOKEN = '7515202530:AAHEuzAdjO6HIkfWDzQboaQFKz9fcp1Nugs';
+const BOT_TOKEN = ''; //masukkin token
 const bot = new Telegraf(BOT_TOKEN);
 
 const userStates = {};
